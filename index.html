@@ -3,10 +3,15 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hangman</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    <div class="container">
+    <div class="div-container">
+      <h1 id="hang" class="">Hangman</h1>
+      <br>
+      <button id="start-btn" class="startGame" onclick="startGame()">Starta spelet</button>
+    </div>
+    <div id="start" class="container hide">
       <div id="options-container"></div>
       <div id="letter-container" class="letter-container hide"></div>
       <div id="user-input-section"></div>

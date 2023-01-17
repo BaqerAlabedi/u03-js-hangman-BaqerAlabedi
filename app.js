@@ -1,4 +1,6 @@
 // initialer referens 
+const startBtn = document.getElementById("start-btn")
+const start = document.getElementById("start")
 const letterContainer = document.getElementById("letter-container");
 const optionContainer = document.getElementById("options-container");
 const userInputSection = document.getElementById("user-input-section");
@@ -6,6 +8,14 @@ const newGameContainer = document.getElementById("new-game-container");
 const resultText = document.getElementById("result-text");
 const newGameButton = document.getElementById("new-game-button");
 const canvas = document.getElementById("canvas");
+
+
+// Start knappen
+function startGame(){
+    start.className = "container"
+    startBtn.className = "hide"
+    hang.className = "hide"
+}
 
 // alternativ variabel för knappar
 let options = {
@@ -32,7 +42,7 @@ let count = 0;
 let chosenWord ="";
 //Visa alternativ knappar
 const displayOptions =() => {
-    optionContainer.innerHTML += `<h3> Hangman <br> Välj ett alternativ</h3>`;
+    optionContainer.innerHTML += `<h3>Välj ett alternativ</h3>`;
     let buttonCon = document.createElement("div");
     for (let value in options){
         buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
@@ -108,7 +118,8 @@ const initializer = () => {
                     if(char === button.innerText){
                         dashes [index].innerText = char;
                         winCount += 1;
-                        if(winCount == charArray.length){
+                        if(winCount === charArray.length){
+                            newGameContainer.className = "new-game-popup"
                             resultText.innerHTML = `<h2 class='win-msg'>Du vann!!</h2><p> ordet var <span>${chosenWord}</span></p>`; 
                             
                        }
@@ -122,6 +133,7 @@ const initializer = () => {
                 //count ==6 eftersom huvud, kropp,höger arm,vänster arm, höger ben, vänster ben
                 
                 if (count == 6) {
+                 newGameContainer.className = "new-game-popup"
                  resultText.innerHTML = `<h2 class='lose-msg'>Du förlorade !!</h2><p> ordet var <span>${chosenWord}</span></p>`; 
                  
                 }
